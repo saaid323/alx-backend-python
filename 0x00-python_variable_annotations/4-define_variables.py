@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-'''Define and annotate the following variables with the specified values'''
+#!/usr/bin/env python3
+
 a: int = 1
 pi: float = 3.14
 i_understand_annotations: bool = True
