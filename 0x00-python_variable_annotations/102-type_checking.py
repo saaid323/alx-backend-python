@@ -2,6 +2,7 @@
 from typing import Tuple, List
 '''function that returns a list'''
 
+
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     '''Functioon that returns a  list'''
     zoomed_in: List = [
