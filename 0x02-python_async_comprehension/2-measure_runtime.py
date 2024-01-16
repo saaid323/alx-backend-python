@@ -11,5 +11,4 @@ async def measure_runtime() -> Generator[float, None, None]:
     start = time.time()
     await asyncio.gather(async_comprehension(), async_comprehension(),
                          async_comprehension(), async_comprehension())
-    end = time.time()
-    return end - start
+    return time.time() - start
