@@ -15,7 +15,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {'b': 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_test_access_nested_map(self, dic: Mapping, path: Sequence,
+    def test_access_nested_map(self, dic: Mapping, path: Sequence,
                                     output: Any) -> None:
         '''method to test that the method returns what it is supposed to'''
         self.assertEqual(access_nested_map(dic, path), output)
@@ -24,7 +24,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b"))
     ])
-    def test_test_access_nested_map_exception(self, dic: Mapping,
+    def test_access_nested_map_exception(self, dic: Mapping,
                                               path: Sequence) -> Any:
         '''method that raises exception error'''
         with self.assertRaises(KeyError):
@@ -39,7 +39,7 @@ class TestGetJson(unittest.TestCase):
     '''class that inherits from unittest.TestCase'''
 
     @patch('utils.requests.get')
-    def test_test_get_json(self, mocked_get):
+    def test_get_json(self, mocked_get):
         '''method to test that utils.get_json returns the expected result.'''
         mock_response = Mock()
         response = self.test_payload
