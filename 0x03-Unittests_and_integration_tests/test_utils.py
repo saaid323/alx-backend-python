@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 '''unittesting utils module'''
 from utils import access_nested_map, get_json
-import unittest
-from unittest.mock import patch, Mock
+from unittest import TestCase, mock 
 from parameterized import parameterized, parameterized_class
 from typing import Mapping, Sequence, Any, Dict
 
 
-class TestAccessNestedMap(unittest.TestCase):
+class TestAccessNestedMap(TestCase):
     '''class that inherits from unittest.TestCase'''
 
     @parameterized.expand([
@@ -35,13 +34,13 @@ class TestAccessNestedMap(unittest.TestCase):
     {'test_url': "http://example.com", 'test_payload': {"payload": True}},
     {'test_url': "http://holberton.io", 'test_payload': {"payload": False}}
 ])
-class TestGetJson(unittest.TestCase):
+class TestGetJson(TestCase):
     '''class that inherits from unittest.TestCase'''
 
-    @patch('utils.requests.get')
+    @mock.patch('utils.requests.get')
     def test_get_json(self, mocked_get: mock.MagicMock):
         '''method to test that utils.get_json returns the expected result.'''
-        mock_response = Mock()
+        mock_response = mock.Mock()
         response = self.test_payload
         mock_response.json.return_value = response
         mocked_get.return_value = mock_response
