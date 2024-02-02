@@ -11,17 +11,14 @@ class TestAccessNestedMap(unittest.TestCase):
     '''class that inherits from unittest.TestCase'''
 
     @parameterized.expand([
-        ({"a": 1}, ("a",)),
-        ({"a": {"b": 2}}, ("a",)),
-        ({"a": {"b": 2}}, ("a", "b"))
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {'b': 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_test_access_nested_map(self, dic: Mapping,
-                                    path: Sequence) -> None:
+                                    path: Sequence, output: Any) -> None:
         '''method to test that the method returns what it is supposed to'''
-        self.assertEqual(
-            access_nested_map(
-                dic, path), access_nested_map(
-                dic, path))
+        self.assertEqual(access_nested_map(dic, path), output)
 
     @parameterized.expand([
         ({}, ("a",)),
