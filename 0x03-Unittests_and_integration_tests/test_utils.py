@@ -30,21 +30,20 @@ class TestAccessNestedMap(TestCase):
             access_nested_map(dic, path)
 
 
-@parameterized_class([
-    {'test_url': "http://example.com", 'test_payload': {"payload": True}},
-    {'test_url': "http://holberton.io", 'test_payload': {"payload": False}}
-])
 class TestGetJson(TestCase):
     '''class that inherits from unittest.TestCase'''
 
-    @mock.patch('utils.requests.get')
-    def test_get_json(self, mocked_get: mock.MagicMock) -> None:
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
+        ])
+    def test_get_json(self, url: str, payload: Dict) -> None:
         '''method to test that utils.get_json returns the expected result.'''
-        mock_response = mock.Mock()
-        response = self.test_payload
-        mock_response.json.return_value = response
-        mocked_get.return_value = mock_response
-        result = get_json(self.test_url)
-        mocked_get.assert_called_with(self.test_url)
-        mocked_get.assert_called_once_with(self.test_url)
-        self.assertEqual(result, self.test_payload)
+        with mock.patch('utils.requests.get') as mocked_get:
+            mock_response = mock.Mock()
+            mock_response.json.return_value = payload
+            mocked_get.return_value = mock_response
+            result = get_json(url)
+            mocked_get.assert_called_with(url)
+            mocked_get.assert_called_once_with(url)
+            self.assertEqual(result, payload)
