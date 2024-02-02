@@ -39,7 +39,7 @@ class TestGetJson(unittest.TestCase):
     '''class that inherits from unittest.TestCase'''
 
     @patch('utils.requests.get')
-    def test_get_json(self, mocked_get: str):
+    def test_get_json(self, mocked_get: mock.MagicMock):
         '''method to test that utils.get_json returns the expected result.'''
         mock_response = Mock()
         response = self.test_payload
