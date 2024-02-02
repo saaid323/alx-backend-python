@@ -4,7 +4,6 @@ from utils import access_nested_map, get_json
 from unittest import TestCase, mock 
 from parameterized import parameterized, parameterized_class
 from typing import Mapping, Sequence, Any, Dict
-import requests
 
 
 class TestAccessNestedMap(TestCase):
@@ -39,7 +38,7 @@ class TestGetJson(TestCase):
     '''class that inherits from unittest.TestCase'''
 
     @mock.patch('utils.requests.get')
-    def test_get_json(self, mocked_get: mock.MagicMock):
+    def test_get_json(self, mocked_get: mock.MagicMock) -> None:
         '''method to test that utils.get_json returns the expected result.'''
         mock_response = mock.Mock()
         response = self.test_payload
