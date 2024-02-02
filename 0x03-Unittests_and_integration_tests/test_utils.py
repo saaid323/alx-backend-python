@@ -4,6 +4,7 @@ from utils import access_nested_map, get_json
 from unittest import TestCase, mock 
 from parameterized import parameterized, parameterized_class
 from typing import Mapping, Sequence, Any, Dict
+import requests
 
 
 class TestAccessNestedMap(TestCase):
