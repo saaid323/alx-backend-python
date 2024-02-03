@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 '''unittesting utils module'''
-from utils import access_nested_map, get_json
-from unittest import TestCase, mock 
+from utils import access_nested_map, get_json, memoize
+from unittest import TestCase, mock
 from parameterized import parameterized, parameterized_class
 from typing import Mapping, Sequence, Any, Dict
 
 
 class TestAccessNestedMap(TestCase):
-    '''class that inherits from unittest.TestCase'''
+    '''class that inherits from TestCase'''
 
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
@@ -31,7 +31,7 @@ class TestAccessNestedMap(TestCase):
 
 
 class TestGetJson(TestCase):
-    '''class that inherits from unittest.TestCase'''
+    '''class that inherits from TestCase'''
 
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
@@ -47,3 +47,26 @@ class TestGetJson(TestCase):
             mocked_get.assert_called_with(url)
             mocked_get.assert_called_once_with(url)
             self.assertEqual(result, payload)
+
+
+class TestMemoize(TestCase):
+    '''class that inherits from TestCase'''
+    
+    def test_memoize(self):
+        '''test_memoize method.'''
+        class TestClass:
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with mock.patch.object(TestClass, 'a_method') as mocked_get:
+            mocked_get.return_value = 42
+            instance = TestClass()
+            result1 = instance.a_property
+            result2 = instance.a_property
+            self.assertEqual(result1, 42)
+            self.assertEqual(result2, 42)
+            mocked_get.assert_called_once()
