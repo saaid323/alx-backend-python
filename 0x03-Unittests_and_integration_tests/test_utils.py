@@ -15,7 +15,7 @@ class TestAccessNestedMap(TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, dic: Mapping, path: Sequence,
-                                    output: Any) -> None:
+                               output: Any) -> None:
         '''method to test that the method returns what it is supposed to'''
         self.assertEqual(access_nested_map(dic, path), output)
 
@@ -24,7 +24,7 @@ class TestAccessNestedMap(TestCase):
         ({"a": 1}, ("a", "b"))
     ])
     def test_access_nested_map_exception(self, dic: Mapping,
-                                              path: Sequence) -> Any:
+                                         path: Sequence) -> Any:
         '''method that raises exception error'''
         with self.assertRaises(KeyError):
             access_nested_map(dic, path)
@@ -36,7 +36,7 @@ class TestGetJson(TestCase):
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
-        ])
+    ])
     def test_get_json(self, url: str, payload: Dict) -> None:
         '''method to test that utils.get_json returns the expected result.'''
         with mock.patch('utils.requests.get') as mocked_get:
@@ -51,10 +51,9 @@ class TestGetJson(TestCase):
 
 class TestMemoize(TestCase):
     '''class that inherits from TestCase'''
-    
+
     def test_memoize(self) -> None:
         '''unittest for test_memoize method.'''
-
 
         class TestClass:
             '''The class we are going to unitest'''
