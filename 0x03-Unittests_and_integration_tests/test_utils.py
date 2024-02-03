@@ -54,12 +54,18 @@ class TestMemoize(TestCase):
     
     def test_memoize(self):
         '''unittest for test_memoize method.'''
+
+
         class TestClass:
+            '''The class we are going to unitest'''
+
             def a_method(self):
+                '''metheod that we are unittesting'''
                 return 42
 
             @memoize
             def a_property(self):
+                '''a_propertyy that is going to call a_method'''
                 return self.a_method()
 
         with mock.patch.object(TestClass, 'a_method') as mocked_get:
