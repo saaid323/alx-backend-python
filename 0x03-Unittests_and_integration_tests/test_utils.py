@@ -52,19 +52,19 @@ class TestGetJson(TestCase):
 class TestMemoize(TestCase):
     '''class that inherits from TestCase'''
     
-    def test_memoize(self):
+    def test_memoize(self) -> None:
         '''unittest for test_memoize method.'''
 
 
         class TestClass:
             '''The class we are going to unitest'''
 
-            def a_method(self):
+            def a_method(self) -> None:
                 '''metheod that we are unittesting'''
                 return 42
 
             @memoize
-            def a_property(self):
+            def a_property(self) -> None:
                 '''a_propertyy that is going to call a_method'''
                 return self.a_method()
 
