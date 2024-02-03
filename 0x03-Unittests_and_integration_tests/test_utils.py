@@ -53,7 +53,7 @@ class TestMemoize(TestCase):
     '''class that inherits from TestCase'''
     
     def test_memoize(self):
-        '''test_memoize method.'''
+        '''unittest for test_memoize method.'''
         class TestClass:
             def a_method(self):
                 return 42
