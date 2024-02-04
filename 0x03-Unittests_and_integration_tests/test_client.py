@@ -25,7 +25,8 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self):
         '''unittest for _public_repos_url'''
-        with patch('client.GithubOrgClient.org', new_callable=PropertyMock) as mock_last_transaction:
+        with patch('client.GithubOrgClient.org', new_callable=PropertyMock)
+        as mock_last_transaction:
             result = {'repos_url': 'result'}
             mock_last_transaction.return_value = result
             self.assertEqual(
@@ -36,7 +37,8 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_public_repos(self, mocked_get):
         '''unittest public_repos'''
         mocked_get.return_value = [{"name": "alx"}, {"name": "backend"}]
-        with patch('client.GithubOrgClient.org', new_callable=PropertyMock) as mocked:
+        with patch('client.GithubOrgClient.org', new_callable=PropertyMock)
+        as mocked:
             mocked.return_value = {"repos_url": "repos_url"}
             self.assertEqual(
                 GithubOrgClient('google').public_repos(),
