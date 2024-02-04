@@ -9,16 +9,13 @@ from typing import Dict
 
 class TestGithubOrgClient(unittest.TestCase):
     '''class that inherits from unittest.TestCase'''
-<<<<<<< HEAD
 
     @parameterized.expand([
         ("google", {'login': "google"}),
         ("abc", {'login': "abc"}),
-=======
     @parameterized.expand([
         ("google", {'payload': False}),
         ("abc", {'payload': False}),
->>>>>>> 8684c60... added test_client.py
     ])
     @patch('client.get_json',)
     def test_org(self, url: str, payload: Dict, mocked_get):
