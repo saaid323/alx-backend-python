@@ -40,6 +40,6 @@ class TestGithubOrgClient(unittest.TestCase):
             mocked.return_value = {"repos_url": "repos_url"}
             self.assertEqual(
                 GithubOrgClient('google').public_repos(),
-                 ["alx", "backend"])
+                ["alx", "backend"])
         mocked.assert_called_once()
         mocked_get.assert_called_once()
